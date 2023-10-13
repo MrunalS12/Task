@@ -1,0 +1,109 @@
+import React from 'react';
+
+const NavBar = () => {
+  return (
+    <nav>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Create Ad</a></li>
+      </ul>
+    </nav>
+  );
+}
+
+export default NavBar;
+
+import React, { useState } from 'react';
+
+const Table = ({ data }) => {
+  const [sortOrder, setSortOrder] = useState('asc'); // You can set the default sorting order here
+
+  const handleSort = () => {
+    // Implement sorting logic here
+  };
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Column Header</th>
+          <th>Column Header</th>
+          {/* Add more columns as needed */}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((item, index) => (
+          <tr key={index}>
+            <td>{item.field1}</td>
+            <td>{item.field2}</td>
+            {/* Add more columns as needed */}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+export default Table;
+
+import React, { useState } from 'react';
+
+const AdsInsights = ({ data }) => {
+  const [selectedMetric, setSelectedMetric] = useState('metric1'); // Set the default metric here
+
+  const handleMetricChange = (event) => {
+    setSelectedMetric(event.target.value);
+    // Implement code to update the doughnut chart based on the selected metric
+  };
+
+  return (
+    <div>
+      <select onChange={handleMetricChange}>
+        <option value="metric1">Metric 1</option>
+        <option value="metric2">Metric 2</option>
+        {/* Add more metrics as needed */}
+      </select>
+      {/* Implement your doughnut chart component here */}
+      {/* Implement a table to display data based on the selected metric */}
+    </div>
+  );
+};
+
+export default AdsInsights;
+
+import React, { useState } from 'react';
+
+const AdCreationForm = () => {
+  const [textAd, setTextAd] = useState(false);
+  const [mediaAd, setMediaAd] = useState(false);
+
+  const handleTextAdChange = () => {
+    setTextAd(!textAd);
+  };
+
+  const handleMediaAdChange = () => {
+    setMediaAd(!mediaAd);
+  };
+
+  const handleSubmit = () => {
+    // Implement form submission logic here
+    // Redirect to Ads Submitted and then to Create Ads Page using React Router or window.location.href
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Text Ad
+        <input type="checkbox" checked={textAd} onChange={handleTextAdChange} />
+      </label>
+      <label>
+        Media Ad
+        <input type="checkbox" checked={mediaAd} onChange={handleMediaAdChange} />
+      </label>
+      {/* Add form inputs for text and media ads */}
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default AdCreationForm;
